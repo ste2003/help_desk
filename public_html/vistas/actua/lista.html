@@ -1,0 +1,93 @@
+<div class="row">
+	<div  class="col-xs-12">
+		<ol class="breadcrumb">
+			<li><a ng-href="#/actua/lista">ActuacionesTaller</a></li>
+			<li><a ng-href="#/materia/lista">Materia </a></li>
+			<li class="active">Lista</li>
+		</ol>
+	</div>
+</div>
+<div class="row">
+	<div  class="col-xs-12">
+		<span>
+			<small>Filtrar datos </small>
+			<input type="text" ng-model="datoFiltro" />
+		</span>
+		<span>
+				<small>Cantidad de filas a mostrar </small>
+				<input type="text" ng-model="quantity" value=10/>
+			</span>
+	</div>
+		
+</div>
+<div class="row">
+	<div  class="col-xs-8">
+		<h2>Lista de Actuaciones</h2>
+	</div>
+	<div class="col-xs-2">
+		<button class="btn btn-danger btn-sm pull-right" ng-click="nuevo()">Nuevo</button>
+	</div>
+	<div  class="col-xs-2"></div>
+</div>
+<div class="row">
+	<div  class="col-xs-10">
+		<table class="table table-hover">
+			<thead> 
+				<tr> 
+					<th>Seleccionar</th> 
+					<th>Grupo</th>
+					<th>Nombre</th> 
+					<th>Codigo</th> 
+					<th>Organismos</th> 
+					<th>Clasificadores</th> 
+					
+				</tr> 
+			</thead>
+			<tbody>
+				<tr ng-repeat="actua in listaActua | filter:datoFiltro | limitTo:quantity"> 
+				
+					<td align="center"><input type="radio" name="cliSelect" ng-click="elegir(actua)" /></td>
+					<td>{{actua.grupo}} </td>
+					<td>{{actua.dac_nombre}} </td>
+					<td>{{actua.dac_codigo}} </td>		
+										  
+					<td >
+						<span ng-repeat = "fue in actua.org_codigo">					
+							{{fue.id}}
+					<span class="badge badge-danger" ng-if="fue.dac_pki == '1'">
+					   FD
+					</span>
+						
+					   </span>
+					</td>
+		
+					<td >
+						<span ng-repeat = "cla in actua.cst_codigo">
+					    {{cla.nombre}}
+					</span>
+					</td>
+
+					
+					<td>
+						<button type="button" class="btn btn-default" aria-label="Editar" ng-click="editar(actua)">
+							<span class="glyphicon glyphicon glyphicon-edit" aria-hidden="true"></span>
+						</button>
+					</td>
+					<td>
+						<button type="button" class="btn btn-default" aria-label="Borrar" ng-click="borrar(actua)">
+							<span class="glyphicon glyphicon glyphicon-trash" aria-hidden="true"></span>
+						</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+
+<div class="row" >
+	<div  class="col-xs-10">
+			<div class="alert alert-success" role="alert" ng-show="showMsgOk">{{msgOk}}</div>
+			<div class="alert alert-danger" role="alert" ng-show="showMsgError">{{msgError}}</div>
+	</div>
+</div>

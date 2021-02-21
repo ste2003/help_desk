@@ -1,0 +1,73 @@
+<div class="row">
+	<div  class="col-xs-12">
+		
+	</div>
+</div>
+<div class="row">
+	<div  class="col-xs-12">
+		<span>
+			<small>Filtrar datos </small>
+			<input type="text" ng-model="datoFiltro" />
+		</span>
+		<span>
+				<small>Cantidad de filas a mostrar </small>
+				<input type="text" ng-model="quantity" value=10/>
+			</span>
+	</div>
+		
+</div>
+<div class="row">
+	<div  class="col-xs-8">
+		<h2>Lista de Contactos</h2>
+	</div>
+	<div class="col-xs-2">
+		<button class="btn btn-danger btn-sm pull-right" ng-click="nuevo()">Nuevo</button>
+	</div>
+	<div  class="col-xs-2"></div>
+</div>
+<div class="row">
+	<div  class="col-xs-10">
+		<table class="table table-hover">
+			<thead> 
+				<tr> 
+					<th>Seleccionar</th> 
+					<th>Fecha</th>
+					<th>Nombre</th> 
+					<th>Resumen</th> 
+					<th>Descripción</th> 
+					<th>Imagen</th> 
+					
+				</tr> 
+			</thead>
+			<tbody>
+				<tr ng-repeat="contacto in listaContacto | filter:datoFiltro | limitTo:quantity"> 
+				
+					<td align="center"><input type="radio" name="cliSelect" ng-click="elegir(actua)" /></td>
+					<td>{{contacto.aud_fecha}} </td>
+					<td>{{contacto.nombre}} </td>
+					<td>{{contacto.resumen}} </td>		
+					<td>{{contacto.desc}} </td>	
+					<td><img ng-show="contacto.adj_unico!=null" ng-src="{{contacto.adj_unico}}" style="height:342px; width:512;">						
+					<td>
+						<button type="button" class="btn btn-default" aria-label="Editar" ng-click="editar(actua)">
+							<span class="glyphicon glyphicon glyphicon-edit" aria-hidden="true"></span>
+						</button>
+					</td>
+					<td>
+						<button type="button" class="btn btn-default" aria-label="Borrar" ng-click="borrar(actua)">
+							<span class="glyphicon glyphicon glyphicon-trash" aria-hidden="true"></span>
+						</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+
+<div class="row" >
+	<div  class="col-xs-10">
+			<div class="alert alert-success" role="alert" ng-show="showMsgOk">{{msgOk}}</div>
+			<div class="alert alert-danger" role="alert" ng-show="showMsgError">{{msgError}}</div>
+	</div>
+</div>

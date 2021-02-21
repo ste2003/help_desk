@@ -1,0 +1,56 @@
+		
+<h3> Formulario de alta de la Base de Conocimiento </h3>
+<div class="row">
+	<div  class="col-xs-6 col-xs-offset-2">
+		<h3> ({{operacion}})</h3>
+		<form name="frmbase"  novalidate="novalidate" class="form">
+			<div class="form-group">
+				<label>Título:</label>
+				<input type="text" class="form-control" ng-disabled='!edicionHabilitada' ng-model="base.titulo" capitalize required />
+			</div>
+		
+
+			<div class="form-group">
+			    <label  class="col-sm-2 control-label">Tema:</label>
+			    
+				<select class="form-control" 
+		 		ng-options="materia as materia.nombre for materia in listaMateria track by materia._id" ng-model="base.tema" required="" ng-disabled='!edicionHabilitada'></select>			    
+			</div>
+
+			
+			<div class="form-group">
+				<label>Pasos:</label>
+			</div>
+			<div>	
+				<input type="text" class="form-control" ng-disabled=true ng-model="base.instruc.nro[0]" value='1' />
+				<textarea class="form-control" ng-disabled='!edicionHabilitada' ng-model="base.instrucc.desc[0]"  required rows="3"></textarea>
+			</div>  
+			<div>	
+				<input type="text" class="form-control" ng-disabled=true ng-model="base.instruc.nro[1]" value='2' />
+				<textarea class="form-control" ng-disabled='!edicionHabilitada' ng-model="base.instrucc.desc[1]"  required rows="3"></textarea>
+			</div> 
+			<div>	
+				<input type="text" class="form-control" ng-disabled=true ng-model="base.instruc.nro[2]" value='3' />
+				<textarea class="form-control" ng-disabled='!edicionHabilitada' ng-model="base.instrucc.desc[2]"  required rows="3"></textarea>
+			</div>  
+			
+			<div class="form-group">
+				
+			<button ng-click="guardar()" ng-show="base._id==null" ng-disabled="frmcontacto.$invalid || !edicionHabilitada" class="btn btn-default btn-lg">
+					<span class="glyphicon glyphicon-plus-sign"aria-hidden="true"></span>
+					Enviar</button>
+			
+				<button type="button" ng-click="cancelar()"  class="btn btn-warning btn-lg">
+					<span class="glyphicon glyphicon-flash" aria-hidden="true"></span>
+					Cancelar
+				</button>
+				<a class='btn btn-info btn-lg' ng-href='#/home' role='button'>Volver</a>
+								
+		</form>
+		<div class="panel-body">
+			<div class="alert alert-success" role="alert" ng-show="showMsgOk">{{msgOk}}</div>
+			<div class="alert alert-danger" role="alert" ng-show="showMsgError">{{msgError}}</div>
+		
+		</div>
+	</div>
+</div>

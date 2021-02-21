@@ -1,0 +1,65 @@
+<div class="row">
+		<div  class="col-xs-12">
+			<ol class="breadcrumb">
+				<li><a ng-href="#/proyectos/lista">TP</a></li>
+				<li><a ng-href="#/proyectos/lista">Materias </a></li>
+				<li class="active">Lista</li>
+			</ol>
+		</div>
+	</div>
+	<div class="row">
+		<div  class="col-xs-12">
+			<span>
+				<small>Filtrar datos </small>
+				<input type="text" ng-model="datoFiltro" />
+			</span>
+		</div>
+	</div>
+	<div class="row">
+		<div  class="col-xs-8">
+			<h2>Lista de Materias
+			</h2>
+		</div>
+		<div class="col-xs-2">
+			<button class="btn btn-danger btn-sm pull-right" ng-click="nuevo()">Nuevo</button>
+		</div>
+		<div  class="col-xs-2"></div>
+	</div>
+	<div class="row">
+		<div  class="col-xs-10">
+			<table class="table table-hover">
+			<thead> 
+			<tr> 
+				<th>Seleccionar</th> 
+				<th>#</th> 
+				<th>Nombre</th> 
+				<th>Código</th>
+				<th>Acciones</th> 
+			</tr> 
+			</thead>
+			<tbody>
+				<tr ng-repeat="materia in listaMateria | filter:datoFiltro | limitTo:quantity"> 
+				
+					<td align="center"><input type="radio" name="cliSelect" ng-click="elegir(materia)" /></td>
+					
+					<td>{{materia.nombre}} </td>
+					<td>{{materia.codigo}} </td>
+					<td>{{materia.materia}} </td>
+					<td>
+						<button type="button" class="btn btn-default" aria-label="Editar" ng-click="editar(materia)">
+							<span class="glyphicon glyphicon glyphicon-edit" aria-hidden="true"></span>
+						</button>
+					</td>
+					<td>
+						<button type="button" class="btn btn-default" aria-label="Borrar" ng-click="borrar(materia)">
+							<span class="glyphicon glyphicon glyphicon-trash" aria-hidden="true"></span>
+						</button>
+					</td>
+				</tr>
+			</tbody>
+
+
+
+			</table>
+		</div>
+	</div>

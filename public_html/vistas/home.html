@@ -1,0 +1,47 @@
+<input type="file" accept="image/*;capture=camera"> 
+<div class="row justify-content-center">
+    <div class="col-lg-4 col-xs-6">
+     <div class="panel panel-danger">
+      <div class="panel-heading">             
+            <div class="col">           
+              <input type="text" class="form-control" placeholder="Ingrese algúna palabra de búsqueda" ng-model="datoFiltro">        
+           </div>            
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <button type="button" class="btn btn-danger btn-lg" ng-click="contactar()">Contáctenos {{hola}}</button>                
+                </div>
+              </div>  
+
+</div>
+
+<div>
+  <button type="button" class="btn btn-primary btn-lg">Large button</button>
+</div>
+  <div class="col-lg-12 col-md-12">
+          <div  class="col-xs-10">
+            <table class="table table-hover">
+            <thead> 
+            <tr> 
+                <th><p class="text-white bg-dark">Preguntas Frecuentes</p></th>                 
+            </tr> 
+            </thead>
+            <tbody>
+            <tr ng-repeat="preg in listaPregunta | filter:datoFiltro | limitTo:quantity">                
+                    <td><h5>{{preg.titulo}} </h5></td>   
+                    <td>
+                        <button type="button" class="btn btn-default" aria-label="Ver" ng-click="ver(preg)">
+                            <span class="glyphicon glyphicon glyphicon-folder-open" aria-hidden="true"></span>
+                        </button>
+                    </td>                 
+                </tr>
+            </tbody>
+        </table>
+    </div>               
+      
+  </div>
+</div>

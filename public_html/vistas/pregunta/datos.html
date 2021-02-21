@@ -1,0 +1,49 @@
+	<div class="row">
+		<div  class="col-xs-12">
+			
+			<form name="frmproyectos"  novalidate="novalidate"  class="form-horizontal">
+			<div class="form-group">
+			   
+			    <div class="col-sm-10">
+			      <h3  >{{pregunta.titulo}} </h3> 
+			    </div>
+			</div>
+			
+<div class="row">
+		
+          <div  class="col-xs-10">
+            <table class="table table-hover">
+            <thead> 
+            <tr> 
+                <th>Instrucciones:</th>                 
+            </tr> 
+            </thead>
+            <tbody>
+            <tr>  
+                    <td>{{pregunta.instruc}} </td>                                    
+             </tr>
+             <tr>             
+                    <td><img ng-show="imagen!=null" ng-src="{{imagen}}" style="height:342px; width:512;">
+
+                           
+                </tr>    
+
+				<tr>  
+                    <td>Temas relacionados: {{pregunta.relac}} </td>                                    
+             </tr>
+                
+            </tbody>
+        </table>
+    </div>  
+
+			<div class="form-group">
+			    <div class="col-sm-offset-2 col-sm-10">
+			      <button type="button" class="btn btn-danger" ng-click="volver()">Volver</button>
+			      <button type="button" class="btn btn-danger" ng-click="contactar()">Contactar</button>
+					
+			    </div>
+			  </div>
+			</form>
+		</div>
+	</div>
+		

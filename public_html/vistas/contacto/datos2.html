@@ -1,0 +1,56 @@
+<h3> Formulario de contacto con Atención de Usuarios </h3>
+<div class="row">
+	<div  class="col-xs-6 col-xs-offset-2">
+		
+		<form name="frmactuas"  novalidate="novalidate" class="form">
+			<div class="form-group">
+				<label>Nombre:</label>
+				<input type="text" class="form-control" ng-model="contacto.nombre" capitalize required  />
+			</div>
+			<div >
+       <input type="file" custom-on-change="uploadFile">
+    	<button type="button" (click)="onUpload()">Upload</button>      
+    	</div>
+
+	
+		
+			<div class="form-group">
+				<label>Correo Electronico:</label>
+				<input type="email" class="form-control" ng-model="contacto.correo"  required="required" />
+			</div> 
+
+			<div class="form-group">
+			    <label  class="col-sm-2 control-label">Tema:</label>
+			    
+				<select class="form-control" 
+		 		ng-options="materia as materia.nombre for materia in listaMateria track by materia._id" ng-model="contacto.tema" required=""></select>			    
+			</div>
+
+			<div class="form-group">
+				<label>Resumen:</label>
+				<input  class="form-control" ng-model="contacto.resumen"  required="required" />
+			</div>  
+			<div class="form-group">
+				<label>Descripción:</label>
+				
+				<textarea class="form-control" ng-model="contacto.desc"  required rows="3"></textarea>
+			</div>  
+
+			<div class="form-group">
+				<button ng-click="guardar()" ng-show="contacto._id==null" ng-disabled="frmactuas.$invalid" class="btn btn-default btn-lg">
+					<span class="glyphicon glyphicon-plus-sign"aria-hidden="true"></span>
+					Enviar</button>
+			
+				<button type="button" ng-click="cancelar()"  class="btn btn-warning btn-lg">
+					<span class="glyphicon glyphicon-flash" aria-hidden="true"></span>
+					Cancelar
+				</button>
+					
+			</div>				
+		</form>
+		<div class="panel-body">
+			<div class="alert alert-success" role="alert" ng-show="showMsgOk">{{msgOk}}</div>
+			<div class="alert alert-danger" role="alert" ng-show="showMsgError">{{msgError}}</div>
+		</div>
+	</div>
+</div>

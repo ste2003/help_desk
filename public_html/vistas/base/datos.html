@@ -1,0 +1,58 @@
+﻿		
+<h3> Formulario de alta de la Base de Conocimiento </h3>
+<div class="row">
+	<div  class="col-xs-6 col-xs-offset-2">
+		<h3> ({{operacion}})</h3>		
+		<form name="frmbase"  novalidate="novalidate" class="form">
+			<div class="form-group">
+				<label>Título:</label>
+				<input type="text" class="form-control" ng-disabled='!edicionHabilitada' ng-model="base.titulo" mayusculas required />
+			</div>
+		
+
+			<div class="form-group">
+			    <label  class="col-sm-2 control-label">Tema:</label>
+			    
+				<select class="form-control" 
+		 		ng-options="materia as materia.nombre for materia in listaMateria track by materia._id" ng-model="base.tema" required="" ng-disabled='!edicionHabilitada'></select>			    
+			</div>
+
+			
+			<div class="form-group">
+				<label>Descripción:</label>
+				
+				<textarea class="form-control" ng-disabled='!edicionHabilitada' ng-model="base.instruc"  required rows="3"></textarea>
+			</div>  
+			<div class="form-group">
+				<label>Imagen:</label>
+				
+				<input type="text" class="form-control" ng-disabled='!edicionHabilitada' ng-model="base.imagen" placeholder="imagen/excel1.png" />
+			</div> 
+			
+			<div class="form-group">
+			<div class="form-group">
+				<label>Temas relacionados:</label>
+				<input type="text" class="form-control" ng-disabled='!edicionHabilitada' ng-model="base.relac" capitalize  />
+			</div>	
+			<button ng-click="guardar()" ng-show="base._id==null" ng-disabled="frmbase.$invalid" class="btn btn-default btn-lg">
+			<span class="glyphicon glyphicon-plus-sign"aria-hidden="true"></span>
+			Guardar</button>
+			<button ng-click="actualizar()"  ng-show="base._id!=null"  ng-disabled="frmbase.$invalid" class="btn btn-primary btn-lg">
+			Actualizar <span class="glyphicon glyphicon-copy" aria-hidden="true" ></span>
+					</button>
+
+			
+			<button type="button" ng-click="cancelar()"  class="btn btn-warning btn-lg">
+			<span class="glyphicon glyphicon-flash" aria-hidden="true"></span>
+					Cancelar
+				</button>
+				<a class="btn btn-info btn-lg" ng-href="#/base/lista" role="button">Ver Todos</a>	
+								
+		</form>
+		<div class="panel-body">
+			<div class="alert alert-success" role="alert" ng-show="showMsgOk">{{msgOk}}</div>
+			<div class="alert alert-danger" role="alert" ng-show="showMsgError">{{msgError}}</div>
+		
+		</div>
+	</div>
+</div>
