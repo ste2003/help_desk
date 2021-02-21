@@ -44,5 +44,6 @@ app.use('/base', rutaBaseAPI);
 
 
 app.listen(8000, function(){
+  console.log("iniciando....");
   console.log("Express server listening en puerto 8000");
 });
